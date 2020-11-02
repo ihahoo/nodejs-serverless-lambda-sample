@@ -41,3 +41,10 @@ functions:
           rules:
             - suffix: .csv
           existing: true
+  api:
+    handler: src/index.api
+    events:
+      - http:
+          path: address
+          method: post
+          private: false
