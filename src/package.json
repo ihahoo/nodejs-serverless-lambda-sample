@@ -6,6 +6,7 @@
   "author": "Ray Guo",
   "dependencies": {
     "aws-sdk": "^2.783.0",
-    "uuid": "^8.3.1"
+    "uuid": "^8.3.1",
+    "validator": "^13.1.17"
   }
 }
