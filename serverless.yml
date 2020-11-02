@@ -9,6 +9,21 @@ provider:
   timeout: 10
   apiGateway:
     shouldStartNameWithService: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+      Resource: arn:aws:s3:::*
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+      Resource: arn:aws:dynamodb:us-west-1:*:*
+    - Effect: Allow
+      Action:
+        - sns:Publish
+      Resource: arn:aws:sns:us-west-1:*:*
 
 package:
   exclude:
@@ -17,9 +32,19 @@ package:
     - src/**
 
 functions:
-  hello:
+  save:
     handler: src/index.handler
+    events:
+      - s3:
+          bucket: hahoo
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+          existing: true
+  api:
+    handler: src/index.api
     events:
       - http:
           path: address
-          method: get
+          method: post
+          private: false
