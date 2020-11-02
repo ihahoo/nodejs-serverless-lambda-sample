@@ -1,0 +1,47 @@
+{
+  "name": "nodejs-serverless-lambda-sample",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "npm run clean && cross-env BABEL_ENV=commonjs BABEL_ENV=production babel src --out-dir lib",
+    "clean": "rimraf lib && rimraf app.zip && rimraf .serverless",
+    "test": "jest",
+    "lint": "eslint src",
+    "zip": "rimraf app.zip && cd src && zip -r -X ../app.zip .",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihahoo/nodejs-serverless-lambda-sample.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "DynamoDB",
+    "sns"
+  ],
+  "author": "Ray Guo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ihahoo/nodejs-serverless-lambda-sample/issues"
+  },
+  "homepage": "https://github.com/ihahoo/nodejs-serverless-lambda-sample#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/plugin-transform-strict-mode": "^7.12.1",
+    "babel-preset-minify": "^0.5.1",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.1",
+    "rimraf": "^3.0.2",
+    "serverless": "^2.9.0"
+  }
+}

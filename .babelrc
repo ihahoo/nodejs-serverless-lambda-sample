@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "@babel/plugin-transform-strict-mode",
+    "@babel/plugin-transform-modules-commonjs"
+  ],
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  }
+}
